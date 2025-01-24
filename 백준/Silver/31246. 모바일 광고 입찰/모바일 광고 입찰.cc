@@ -26,9 +26,8 @@ int main() {
     Bid* bids = (Bid*)malloc(sizeof(Bid) * N);
 
     // 입력 받기
-    for (int i = 0; i < N; i++) {
+    for (int i = 0; i < N; i++)
         scanf("%d %d", &bids[i].A, &bids[i].B);
-    }
 
     // 이진 탐색
     int left = 0, right = 1000000000, X = 0;
