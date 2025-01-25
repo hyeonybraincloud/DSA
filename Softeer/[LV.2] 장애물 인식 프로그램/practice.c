@@ -43,6 +43,11 @@ void bfs(int x, int y) {
     block_sizes[block_count++] = size;
 }
 
+// 비교 함수 (오름차순 정렬용)
+int compare(const void* a, const void* b) {
+    return (*(int*)a - *(int*)b);
+}
+
 int main() {
     // 지도 크기 입력 받기
     scanf("%d", &N);
@@ -64,16 +69,8 @@ int main() {
         }
     }
 
-    // 블록 크기 오름차순 정렬
-    for (int i = 0; i < block_count - 1; i++) {
-        for (int j = 0; j < block_count - i - 1; j++) {
-            if (block_sizes[j] > block_sizes[j + 1]) {
-                int temp = block_sizes[j];
-                block_sizes[j] = block_sizes[j + 1];
-                block_sizes[j + 1] = temp;
-            }
-        }
-    }
+    // 블록 크기 정렬 (qsort 사용)
+    qsort(block_sizes, block_count, sizeof(int), compare);
 
     // 결과 출력
     printf("%d\n", block_count); // 블록 개수
