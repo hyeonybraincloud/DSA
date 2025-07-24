@@ -41,6 +41,7 @@ def melt(iceberg_map, n, m):
 
 # 메인 함수
 def main():
+    input = sys.stdin.readline
     n, m = map(int, input().split())
     iceberg_map = [list(map(int, input().split())) for _ in range(n)]
     year = 0
